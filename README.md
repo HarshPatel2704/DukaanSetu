@@ -16,7 +16,7 @@ DukaanSetu is a platform designed to bridge the gap between offline shopkeepers 
 
 ---
 
-## 📊 Entity-Relationship Diagram (ERD) Specification
+## Entity-Relationship Diagram (ERD) Specification
 
 ### **1. Entities and Attributes**
 
@@ -64,7 +64,7 @@ DukaanSetu is a platform designed to bridge the gap between offline shopkeepers 
 
 ---
 
-## 🧩 Module Specification
+## Module Specification
 
 ### **Module 1: Authentication & Identity (Auth)**
 *   **Purpose**: Secure access and role identification.
@@ -91,7 +91,7 @@ DukaanSetu is a platform designed to bridge the gap between offline shopkeepers 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js installed
@@ -113,7 +113,7 @@ DukaanSetu is a platform designed to bridge the gap between offline shopkeepers 
 2. Install dependencies: `npm install`
 3. Start the Vite dev server: `npm run dev`
 
-## 🛠 Usage
+## Usage
 - **Customer**: Just signup and start shopping.
 - **Shopkeeper**: Use secret code **8899** during signup.
 - **Admin**: Use secret code **8899** during signup.
