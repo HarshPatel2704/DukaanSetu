@@ -12,7 +12,7 @@ const Login = ({ handleLogin }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/login`, formData);
       localStorage.setItem('token', res.data.token);
       handleLogin(res.data.user);
       navigate(`/${res.data.user.role}`);
