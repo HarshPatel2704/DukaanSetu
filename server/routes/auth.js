@@ -24,7 +24,7 @@ router.post('/signup', async (req, res) => {
         await user.save();
 
         // Send welcome email in background (don't await)
-        //sendWelcomeEmail(user).catch(err => console.error('Background Email Error:', err));
+        sendWelcomeEmail(user).catch(err => console.error('Background Email Error:', err));
 
         const payload = { id: user.id, role: user.role };
         const token = jwt.sign(payload, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' });
