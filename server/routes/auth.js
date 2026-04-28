@@ -30,8 +30,9 @@ router.post('/signup', async (req, res) => {
         const token = jwt.sign(payload, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' });
         res.json({ token, user: { id: user.id, name: user.name, role: user.role } });
     } catch (err) {
-        console.error('Signup error:', err);
-        res.status(500).send('Server error');
+        console.error('DETAILED SIGNUP ERROR:', err.message); // This will show in Render logs
+    console.error(err); // This shows the full stack trace
+    res.status(500).json({ error: err.message }); // This sends the real error to the frontend
     }
 });
 
