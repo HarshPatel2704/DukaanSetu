@@ -24,7 +24,7 @@ const CustomerView = ({ defaultView = 'marketplace' }) => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/products');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products`);
       setProducts(res.data); setFilteredProducts(res.data);
     } catch (err) { console.error(err); } finally { setLoading(false); }
   };
@@ -33,7 +33,7 @@ const CustomerView = ({ defaultView = 'marketplace' }) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
-      const res = await axios.get('http://localhost:5000/api/orders/customer', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/orders/customer`, { headers: { Authorization: `Bearer ${token}` } });
       setOrders(res.data);
     } catch (err) { console.error(err); }
   };
@@ -90,7 +90,7 @@ const CustomerView = ({ defaultView = 'marketplace' }) => {
         products: cart.map(i => ({ productId: i._id, quantity: i.quantity, price: i.price })),
         totalAmount: cart.reduce((sum, i) => sum + i.price * i.quantity, 0)
       };
-      await axios.post('http://localhost:5000/api/orders', orderData, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/orders`, orderData, { headers: { Authorization: `Bearer ${token}` } });
       showMsg('Order placed successfully! 🎉');
       setCart([]); fetchOrders(); setView('orders');
     } catch (err) {
@@ -102,7 +102,7 @@ const CustomerView = ({ defaultView = 'marketplace' }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/reviews', reviewData, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/reviews`, reviewData, { headers: { Authorization: `Bearer ${token}` } });
       showMsg('Thank you for your feedback!');
       setShowReviewForm(null);
       setReviewData({ orderId: '', rating: 5, comment: '' });
