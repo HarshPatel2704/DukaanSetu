@@ -11,8 +11,8 @@ const FeedbackMonitoring = () => {
   const fetchReviews = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/reviews/shopkeeper', {
-        headers: { Authorization: `Bearer ${token}` }
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/reviews/shopkeeper`, {
+      headers: { Authorization: `Bearer ${token}` }
       });
       setReviews(res.data);
     } catch (err) {
