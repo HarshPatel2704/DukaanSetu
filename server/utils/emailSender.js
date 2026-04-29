@@ -12,17 +12,12 @@ const sendWelcomeEmail = async (user) => {
 
     // Gmail configuration for Nodemailer
     const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true, // Use SSL
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
     // Content based on user role for personalization
     let roleAction = "Get Started";
@@ -181,7 +176,7 @@ const sendWelcomeEmail = async (user) => {
     try {
         await transporter.sendMail(mailOptions);
     } catch (error) {
-        // Silently fail or log only critical system errors if absolutely necessary
+        console.error("NODEMAILER ERROR:", error);
     }
 };
 
