@@ -116,8 +116,8 @@ const ShopkeeperOrders = () => {
   const fetchOrders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/orders/shopkeeper', {
-        headers: { Authorization: `Bearer ${token}` }
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/orders/shopkeeper`, {
+      headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(res.data.orders);
     } catch (err) {
@@ -138,9 +138,9 @@ const ShopkeeperOrders = () => {
       }
       const nextStatus = (currentStatus === 'pending' || !currentStatus) ? 'delivered' : 'pending';
       const res = await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/status`,
-        { status: nextStatus },
-        { headers: { Authorization: `Bearer ${token}` } }
+      `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/orders/${orderId}/status`,
+      { status: nextStatus },
+      { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log("Update response:", res.data);
       fetchOrders();
