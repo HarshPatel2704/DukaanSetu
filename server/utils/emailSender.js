@@ -146,7 +146,7 @@ const sendWelcomeEmail = async (user) => {
                             <p>Your account is now active. You can start exploring all the features we've designed to make your experience seamless and productive.</p>
 
                             <div class="button-container">
-                                <a href="http://localhost:5173/login" class="button">${roleAction}</a>
+                                <a href="[https://dukaansetu-nine.vercel.app/login](https://dukaansetu-nine.vercel.app/login)" class="button">${roleAction}</a>
                             </div>
 
                             <p>If you have any questions or need assistance, our support team is always here to help. Just reply to this email!</p>
@@ -191,17 +191,12 @@ const sendOrderConfirmationEmail = async (user, order) => {
     }
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
     const productListHtml = order.products.map(p => `
         <tr>
@@ -266,7 +261,7 @@ const sendOrderConfirmationEmail = async (user, order) => {
                             </table>
 
                             <div style="text-align: center;">
-                                <a href="http://localhost:5173/orders" class="button">View My Orders</a>
+                                <a href="[https://dukaansetu-nine.vercel.app/orders](https://dukaansetu-nine.vercel.app/orders)" class="button">View My Orders</a>
                             </div>
 
                             <p style="margin-top: 30px;">We'll notify you when your order status changes. Thank you for supporting local businesses!</p>
