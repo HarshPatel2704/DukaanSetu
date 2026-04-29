@@ -17,14 +17,14 @@ const ProductManagement = () => {
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/products/shopkeeper', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products/shopkeeper`, { headers: { Authorization: `Bearer ${token}` } });
       setProducts(res.data);
     } catch (err) { console.error(err); }
   };
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/categories');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin/categories`);
       setCategories(res.data);
     } catch (err) { console.error(err); }
   };
@@ -33,7 +33,7 @@ const ProductManagement = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/products', newProduct, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products`, newProduct, { headers: { Authorization: `Bearer ${token}` } });
       setMessage('Product added successfully!');
       setNewProduct({ name: '', price: '', description: '', image: '', category: 'General' });
       fetchProducts();
@@ -45,7 +45,7 @@ const ProductManagement = () => {
     if (window.confirm('Delete this product?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:5000/api/products/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products/${id}`, { headers: { Authorization: `Bearer ${token}` } });
         fetchProducts();
       } catch (err) { console.error(err); }
     }
