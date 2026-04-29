@@ -42,7 +42,7 @@ const ShopkeeperDashboard = () => {
   const fetchSales = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('/api/orders/shopkeeper', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/orders/shopkeeper`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSalesData(res.data);
@@ -52,7 +52,7 @@ const ShopkeeperDashboard = () => {
   const fetchActiveCount = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('/api/products/shopkeeper', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products/shopkeeper`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setActiveProducts(res.data.length);
