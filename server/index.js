@@ -24,9 +24,7 @@ mongoose.connect(MONGO_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
-// Make io accessible in routes
 app.set('socketio', io);
-
 io.on('connection', (socket) => {
     socket.on('join', (userId) => {
         socket.join(userId);
