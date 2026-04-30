@@ -144,7 +144,7 @@ const sendWelcomeEmail = async (user) => {
                             <p>Your account is now active. You can start exploring all the features we've designed to make your experience seamless and productive.</p>
 
                             <div class="button-container">
-                                <a href="[https://dukaansetu-nine.vercel.app/login](https://dukaansetu-nine.vercel.app/login)" class="button">${roleAction}</a>
+                                <a href="https://dukaansetu-nine.vercel.app/login" class="button">${roleAction}</a>
                             </div>
 
                             <p>If you have any questions or need assistance, our support team is always here to help. Just reply to this email!</p>
