@@ -1,9 +1,4 @@
 const nodemailer = require('nodemailer');
-
-/**
- * Sends a premium and professional welcome email to newly registered users.
- * @param {Object} user - The user object containing name, email, and role.
- */
 const sendWelcomeEmail = async (user) => {
     // Check if configuration is present
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
@@ -180,11 +175,6 @@ const sendWelcomeEmail = async (user) => {
     }
 };
 
-/**
- * Sends a professional order confirmation email to the customer.
- * @param {Object} user - The customer object containing name and email.
- * @param {Object} order - The order object containing products and totalAmount.
- */
 const sendOrderConfirmationEmail = async (user, order) => {
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
         return;
