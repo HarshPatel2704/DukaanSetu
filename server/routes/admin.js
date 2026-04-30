@@ -6,7 +6,6 @@ const Product = require('../models/Product');
 const Order = require('../models/Order');
 const Category = require('../models/Category');
 
-// --- User Management ---
 router.get('/users', auth, async (req, res) => {
     if (req.user.role !== 'admin') return res.status(403).json({ message: 'Access denied' });
     try {
@@ -23,7 +22,6 @@ router.delete('/users/:id', auth, async (req, res) => {
     } catch (err) { res.status(500).send('Server error'); }
 });
 
-// --- Product Management ---
 router.get('/products', auth, async (req, res) => {
     if (req.user.role !== 'admin') return res.status(403).json({ message: 'Access denied' });
     try {
@@ -40,7 +38,6 @@ router.delete('/products/:id', auth, async (req, res) => {
     } catch (err) { res.status(500).send('Server error'); }
 });
 
-// --- Stats & Monitoring ---
 router.get('/stats', auth, async (req, res) => {
     if (req.user.role !== 'admin') return res.status(403).json({ message: 'Access denied' });
     try {
@@ -65,7 +62,6 @@ router.get('/stats', auth, async (req, res) => {
     } catch (err) { res.status(500).send('Server error'); }
 });
 
-// --- Category Management ---
 router.get('/categories', async (req, res) => {
     try {
         const categories = await Category.find();
