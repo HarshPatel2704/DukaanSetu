@@ -6,7 +6,6 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 const { sendOrderConfirmationEmail } = require('../utils/emailSender');
 
-// Place order (Customer)
 router.post('/', auth, async (req, res) => {
     const { products, totalAmount } = req.body;
     try {
@@ -18,7 +17,6 @@ router.post('/', auth, async (req, res) => {
         const order = await newOrder.save();
         const io = req.app.get('socketio');
 
-        // Send order confirmation email in background
         try {
             const user = await User.findById(req.user.id);
             // Populate product names for the email and identify unique shopkeepers
@@ -32,7 +30,6 @@ router.post('/', auth, async (req, res) => {
                 };
             }));
 
-            // Notify each unique shopkeeper via socket
             shopkeeperIds.forEach(skId => {
                 io.to(skId).emit('newOrder', {
                     message: 'You have a new order!',
@@ -48,7 +45,6 @@ router.post('/', auth, async (req, res) => {
 
             sendOrderConfirmationEmail(user, emailData).catch(e => {});
         } catch (emailErr) {
-            // Silently fail if email or socket fails
         }
 
         res.json(order);
@@ -58,7 +54,6 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
-// Get order history (Customer)
 router.get('/customer', auth, async (req, res) => {
     try {
         const orders = await Order.find({ customerId: req.user.id })
@@ -70,7 +65,6 @@ router.get('/customer', auth, async (req, res) => {
     }
 });
 
-// Update order status (Shopkeeper)
 router.put('/:id/status', auth, async (req, res) => {
     console.log(`Status update request for order ${req.params.id} to ${req.body.status}`);
     if (req.user.role !== 'shopkeeper') return res.status(403).json({ message: 'Access denied' });
