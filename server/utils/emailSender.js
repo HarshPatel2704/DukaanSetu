@@ -5,13 +5,12 @@ const sendWelcomeEmail = async (user) => {
     }
 
     const transporter = nodemailer.createTransport({
-    service: 'gmail', // This automatically handles host and port 465/587
+    service: 'gmail', 
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
     tls: {
-        // Essential for Render to talk to Google without certificate errors
         rejectUnauthorized: false 
     }
 });
