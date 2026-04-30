@@ -1,11 +1,9 @@
 const nodemailer = require('nodemailer');
 const sendWelcomeEmail = async (user) => {
-    // Check if configuration is present
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
         return;
     }
 
-    // Gmail configuration for Nodemailer
     const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -14,7 +12,6 @@ const sendWelcomeEmail = async (user) => {
     }
 });
 
-    // Content based on user role for personalization
     let roleAction = "Get Started";
     let roleDescription = "Explore the platform and see what's new today.";
 
