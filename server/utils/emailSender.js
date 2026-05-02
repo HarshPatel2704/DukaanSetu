@@ -251,7 +251,7 @@ const sendOrderConfirmationEmail = async (user, order) => {
                             </table>
 
                             <div style="text-align: center;">
-                                <a href="[https://dukaansetu-nine.vercel.app/orders](https://dukaansetu-nine.vercel.app/orders)" class="button">View My Orders</a>
+                                <a href="https://dukaansetu-nine.vercel.app/orders" class="button">View My Orders</a>
                             </div>
 
                             <p style="margin-top: 30px;">We'll notify you when your order status changes. Thank you for supporting local businesses!</p>
