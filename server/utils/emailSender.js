@@ -13,7 +13,10 @@ const sendWelcomeEmail = async (user) => {
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        connectionTimeout: 10000, 
+        greetingTimeout: 10000,   
+        socketTimeout: 10000     
     });
 
     let roleAction = "Get Started";
@@ -99,7 +102,10 @@ const sendOrderConfirmationEmail = async (user, order) => {
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        connectionTimeout: 10000, 
+        greetingTimeout: 10000,  
+        socketTimeout: 10000     
     });
 
     const productListHtml = order.products.map(p => `
