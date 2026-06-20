@@ -12,7 +12,6 @@ The platform helps traditional businesses grow digitally by enabling product lis
 ---
 
 # Key Features
-
 ## Authentication & Role Management
 - Secure JWT-based Login / Signup
 - Password encryption using BcryptJS
