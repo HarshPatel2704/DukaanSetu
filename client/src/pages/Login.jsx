@@ -483,7 +483,6 @@ const Login = ({ handleLogin }) => {
               </span>
             </div>
           </div>
-
           <div className="ds-signup" style={{ marginTop: '1.5rem' }}>
             New to DukaanSetu? <a href="/signup">Create an account</a>
           </div>
