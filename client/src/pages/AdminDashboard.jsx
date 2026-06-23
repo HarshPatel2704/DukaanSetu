@@ -599,7 +599,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
               </div>
             </div>
           )}
-
         </div>
       </div>
     </>
