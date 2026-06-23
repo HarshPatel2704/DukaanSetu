@@ -381,7 +381,6 @@ const Signup = ({ handleLogin }) => {
               </span>
             </div>
           </div>
-
           <div className="ds-login-link">
             Already have an account? <a href="/login">Sign in</a>
           </div>
