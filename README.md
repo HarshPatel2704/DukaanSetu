@@ -3,10 +3,6 @@
 DukaanSetu is a modern **multi-role MERN stack marketplace** designed to connect **offline local shopkeepers** with **online customers**.  
 The platform helps traditional businesses grow digitally by enabling product listings, online ordering, and role-based dashboards.
 
----
-
-# Live Vision
-
 > Empower local stores with digital tools and help customers shop nearby with convenience.
 
 ---
