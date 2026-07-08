@@ -450,7 +450,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
             </div>
           )}
 
-          {/* ── PRODUCTS ── */}
           {activeTab === 'products' && (
             <div className="ds-card ds-fade">
               <div className="ds-card-header">
