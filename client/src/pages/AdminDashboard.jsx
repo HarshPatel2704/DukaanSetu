@@ -9,7 +9,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
   const [stats, setStats] = useState(null);
   const [newCategory, setNewCategory] = useState({ name: '', description: '' });
   const [editingCategory, setEditingCategory] = useState(null);
-
   const token = localStorage.getItem('token');
   const config = { headers: { Authorization: `Bearer ${token}` } };
 
@@ -69,7 +68,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
     if (role === 'shopkeeper') return { background: 'rgba(59,130,246,0.1)', color: '#3B82F6', border: '1px solid rgba(59,130,246,0.25)' };
     return { background: 'rgba(122,102,82,0.1)', color: '#7A6652', border: '1px solid rgba(122,102,82,0.2)' };
   };
-
   return (
     <>
       <style>{`
@@ -96,7 +94,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
           padding: 2.5rem 1.5rem 4rem;
           position: relative;
         }
-
         .ds-admin-root::before {
           content: '';
           position: fixed; inset: 0;
@@ -105,13 +102,11 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
           background-size: 48px 48px;
           pointer-events: none; z-index: 0;
         }
-
         .ds-admin-inner {
           max-width: 1100px;
           margin: 0 auto;
           position: relative; z-index: 1;
         }
-
         /* Header */
         .ds-admin-header {
           display: flex; align-items: flex-start; justify-content: space-between;
@@ -381,7 +376,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
             </div>
           </div>
 
-          {/* Tabs */}
           <div className="ds-tabs">
             {tabs.map(t => (
               <button key={t.id} className={`ds-tab ${activeTab === t.id ? 'active' : ''}`} onClick={() => setActiveTab(t.id)}>
@@ -390,7 +384,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
             ))}
           </div>
 
-          {/* ── STATS ── */}
           {activeTab === 'stats' && stats && (
             <div className="ds-fade">
               <div className="ds-stat-grid">
@@ -484,7 +477,7 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
             </div>
           )}
 
-          {/* ── CATEGORIES ── */}
+  
           {activeTab === 'categories' && (
             <div className="ds-cat-grid ds-fade">
               <div>
@@ -555,7 +548,6 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
             </div>
           )}
 
-          {/* ── USERS ── */}
           {activeTab === 'users' && (
             <div className="ds-card ds-fade">
               <div className="ds-card-header">
