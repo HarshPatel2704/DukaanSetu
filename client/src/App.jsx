@@ -42,7 +42,6 @@ function App() {
         <Route path="/cart" element={isRole('customer') ? <div className="container mt-4  "><CustomerView defaultView="cart" /></div> : <Navigate to="/login" />} />
         <Route path="/orders" element={isRole('customer') ? <div className="container mt-4"><CustomerView defaultView="orders" /></div> : <Navigate to="/login" />} />
         
-        {/* Shopkeeper Routes */}
         <Route path="/shopkeeper" element={isRole('shopkeeper') ? <div className="container mt-4"><ShopkeeperDashboard /></div> : <Navigate to="/login" />} />
         <Route path="/shopkeeper-orders" element={isRole('shopkeeper') ? <div className="container mt-4"><ShopkeeperOrders /></div> : <Navigate to="/login" />} />
         <Route path="/product-management" element={isRole('shopkeeper') ? <div className="container mt-4"><ProductManagement /></div> : <Navigate to="/login" />} />
