@@ -88,6 +88,7 @@ const sendWelcomeEmail = async (user) => {
         console.error("NODEMAILER ERROR:", error);
     }
 };
+
 const sendOrderConfirmationEmail = async (user, order) => {
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
         return;
