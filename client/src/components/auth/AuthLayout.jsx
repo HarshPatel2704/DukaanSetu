@@ -12,17 +12,6 @@ const FEATURES = [
   "An AI pair programmer wired into every repo",
   "One workspace, from first commit to production",
 ];
-
-/**
- * Two-column shell shared by Login and Register: a dark brand panel on
- * the left (hidden on small screens) and the auth card on the right.
- *
- * Props:
- * - eyebrow: small label above the heading (e.g. "Welcome back")
- * - title / description: page heading + supporting copy
- * - children: the form itself
- * - footer: node rendered under the card (e.g. the "Register" link)
- */
 export default function AuthLayout({ eyebrow, title, description, children, footer }) {
   return (
     <div className="flex min-h-screen flex-col bg-surface lg:flex-row">
