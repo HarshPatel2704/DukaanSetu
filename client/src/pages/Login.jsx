@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Login = ({ handleLogin }) => {
@@ -13,7 +12,10 @@ const Login = ({ handleLogin }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const res = await axios.post(
+        'https://dukaansetu-backend.onrender.com/api/auth/login',
+        formData
+      );
       localStorage.setItem('token', res.data.token);
       handleLogin(res.data.user);
       navigate(`/${res.data.user.role}`);
@@ -487,8 +489,6 @@ const Login = ({ handleLogin }) => {
 
           <div className="ds-signup" style={{ marginTop: '1.5rem' }}>
             New to DukaanSetu? <Link to="/signup">Create an account</Link>
-            {/* <a href="/signup">Create an account</a> */}
-            {/* <Link className="ds-btn-signup" to="/signup"> </Link> */}
           </div>
         </div>
       </div>
