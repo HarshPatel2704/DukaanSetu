@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = ({ handleLogin }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -485,7 +486,8 @@ const Login = ({ handleLogin }) => {
           </div>
 
           <div className="ds-signup" style={{ marginTop: '1.5rem' }}>
-            New to DukaanSetu? <a href="/signup">Create an account</a>
+            New to DukaanSetu? <Link to="/signup">Create an account</Link>
+            {/* <a href="/signup">Create an account</a> */}
             {/* <Link className="ds-btn-signup" to="/signup"> </Link> */}
           </div>
         </div>
