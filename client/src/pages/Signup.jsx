@@ -24,7 +24,7 @@ const Signup = ({ handleLogin }) => {
     try {
       // const res = await axios.post('http://localhost:5000/api/auth/signup', formData);
       const res = await axios.post(
-        "https://your-backend-url.onrender.com/api/auth/register",
+        'https://dukaansetu-backend.onrender.com/api/auth/register',
         formData
       );
       localStorage.setItem('token', res.data.token);
