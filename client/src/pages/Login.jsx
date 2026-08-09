@@ -485,7 +485,7 @@ const Login = ({ handleLogin }) => {
           </div>
 
           <div className="ds-signup" style={{ marginTop: '1.5rem' }}>
-            New to DukaanSetu? <a href="/signup">Create an account</a>
+            New to DukaanSetu? <Link className="ds-btn-signup" to="/signup"> Create an account</Link>
           </div>
         </div>
       </div>
