@@ -21,7 +21,6 @@ const FeedbackMonitoring = () => {
   };
 
   const reversed = reviews.slice().reverse();
-
   // Compute average rating
   const avgRating = reviews.length
     ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
