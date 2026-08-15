@@ -40,7 +40,9 @@ function App() {
 
   return (
     <Router>
-      <Navbar user={user} onLogout={handleLogout} />
+      {/* <Navbar user={user} onLogout={handleLogout} /> */}
+
+      <Navbar user={user} handleLogout={handleLogout} />
 
       <Routes>
         {/* Public Routes */}
