@@ -72,7 +72,7 @@ const Home = () => {
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, 0.3);
 
-  const API_URL = 'http://dukaansetu-backend.onrender.com/api';
+  const API_URL = 'https://dukaansetu-backend.onrender.com/api';
 
   useEffect(() => {
     const fetchData = async () => {
