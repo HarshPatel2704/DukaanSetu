@@ -20,8 +20,12 @@ const Login = ({ handleLogin }) => {
       handleLogin(res.data.user);
       navigate(`/${res.data.user.role}`);
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid Credentials');
-    }
+  console.log("LOGIN ERROR:", err);
+  console.log("STATUS:", err.response?.status);
+  console.log("DATA:", err.response?.data);
+
+  setError(err.response?.data?.message || 'Invalid Credentials');
+}
   };
 
   return (
