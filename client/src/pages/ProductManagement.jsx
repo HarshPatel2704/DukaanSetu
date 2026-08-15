@@ -38,14 +38,14 @@ const ProductManagement = () => {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.get('https://dukaansetu-backend.onrender.com/api/products/shopkeeper', { headers: { Authorization: `Bearer ${token}` } });
-      setProducts(res.data);
+      setProducts(Array.isArray(res.data) ? res.data : res.data.products || []);
     } catch (err) { console.error(err); }
   };
 
   const fetchCategories = async () => {
     try {
       const res = await axios.get('https://dukaansetu-backend.onrender.com/api/admin/categories');
-      setCategories(res.data);
+      setCategories(Array.isArray(res.data) ? res.data : res.data.categories || []);
     } catch (err) { console.error(err); }
   };
 
