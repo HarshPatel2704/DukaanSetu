@@ -341,7 +341,7 @@ const audioRef = useRef(new Audio('https://assets.mixkit.co/active_storage/sfx/2
                 </svg>
               </div>
               <p className="ds-stat-label">Total Profit Earned</p>
-              <p className="ds-stat-value">₹{salesData.profit?.toLocaleString()}</p>
+              <p className="ds-stat-value">₹{salesData?.profit?.toLocaleString() || 0}</p>
             </div>
 
             <div className="ds-stat-card green">
@@ -353,7 +353,7 @@ const audioRef = useRef(new Audio('https://assets.mixkit.co/active_storage/sfx/2
                 </svg>
               </div>
               <p className="ds-stat-label">Total Orders</p>
-              <p className="ds-stat-value">{salesData.orders.length}</p>
+              <p className="ds-stat-value">{(salesData?.orders || []).length}</p>
             </div>
 
             <div className="ds-stat-card blue">
