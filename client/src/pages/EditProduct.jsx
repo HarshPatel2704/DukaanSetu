@@ -17,7 +17,7 @@ const EditProduct = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/categories');
+        const res = await axios.get('http://dukaansetu-backend.onrender.com/api/admin/categories');
         setCategories(res.data);
       } catch (err) { console.error(err); }
     };
@@ -27,7 +27,7 @@ const EditProduct = () => {
       try {
         const token = localStorage.getItem('token');
         const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
-        const res = await axios.get(`http://localhost:5000/api/products/${id}`, config);
+        const res = await axios.get(`http://dukaansetu-backend.onrender.com/api/products/${id}`, config);
         if (res.data) {
           setFormData({
             name: res.data.name || '',
@@ -57,7 +57,7 @@ const EditProduct = () => {
     setIsGenerating(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:5000/api/products/generate-description', 
+      const res = await axios.post('http://dukaansetu-backend.onrender.com/api/products/generate-description', 
         { name: formData.name, category: formData.category, price: formData.price },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -83,7 +83,7 @@ const EditProduct = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) { showMsg('Session expired. Please login again.', 'error'); setSaving(false); return; }
-      await axios.put(`http://localhost:5000/api/products/${id}`, formData, {
+      await axios.put(`http://dukaansetu-backend.onrender.com/api/products/${id}`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       showMsg('Product updated successfully! Redirecting…', 'success');
