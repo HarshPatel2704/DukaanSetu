@@ -36,8 +36,7 @@ const Login = ({ handleLogin }) => {
 
   localStorage.setItem('token', res.data.token);
 
-  // Temporarily comment this
-  // handleLogin(res.data.user);
+  handleLogin(res.data.user);
 
   navigate(`/${res.data.user.role}`);
 
