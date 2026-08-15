@@ -17,7 +17,7 @@ const ShopkeeperDashboard = () => {
     const user = JSON.parse(localStorage.getItem('user')); // Assuming user info is stored in localStorage
 
     if (user && user.id) {
-      socketRef.current = io('http://localhost:5000');
+      socketRef.current = io('http://dukaansetu-backend.onrender.com');
       
       // Join a room specific to this shopkeeper
       socketRef.current.emit('join', user.id);
