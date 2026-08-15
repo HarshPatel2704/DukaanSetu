@@ -59,7 +59,7 @@ const ShopkeeperDashboard = () => {
     } catch (err) { console.error(err); }
   };
 
-  const orders = salesData.orders.slice().reverse();
+  const orders = (salesData.orders || []).slice().reverse();
 
   return (
     <>
