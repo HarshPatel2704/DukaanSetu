@@ -116,7 +116,7 @@ const ShopkeeperOrders = () => {
   const fetchOrders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/orders/shopkeeper', {
+      const res = await axios.get('http://dukaansetu-backend.onrender.com/api/orders/shopkeeper', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(res.data.orders);
@@ -138,7 +138,7 @@ const ShopkeeperOrders = () => {
       }
       const nextStatus = (currentStatus === 'pending' || !currentStatus) ? 'delivered' : 'pending';
       const res = await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/status`,
+        `http://dukaansetu-backend.onrender.com/api/orders/${orderId}/status`,
         { status: nextStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
