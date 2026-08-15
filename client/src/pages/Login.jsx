@@ -11,15 +11,37 @@ const Login = ({ handleLogin }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+//     try {
+//       const res = await axios.post(
+//         'https://dukaansetu-backend.onrender.com/api/auth/login',
+//         formData
+//       );
+//       localStorage.setItem('token', res.data.token);
+//       handleLogin(res.data.user);
+//       navigate(`/${res.data.user.role}`);
+//     } catch (err) {
+//   console.log("LOGIN ERROR:", err);
+//   console.log("STATUS:", err.response?.status);
+//   console.log("DATA:", err.response?.data);
+
+//   setError(err.response?.data?.message || 'Invalid Credentials');
+// }
     try {
-      const res = await axios.post(
-        'https://dukaansetu-backend.onrender.com/api/auth/login',
-        formData
-      );
-      localStorage.setItem('token', res.data.token);
-      handleLogin(res.data.user);
-      navigate(`/${res.data.user.role}`);
-    } catch (err) {
+  const res = await axios.post(
+    'https://dukaansetu-backend.onrender.com/api/auth/login',
+    formData
+  );
+
+  console.log("LOGIN RESPONSE:", res.data);
+
+  localStorage.setItem('token', res.data.token);
+
+  // Temporarily comment this
+  // handleLogin(res.data.user);
+
+  navigate(`/${res.data.user.role}`);
+
+} catch (err) {
   console.log("LOGIN ERROR:", err);
   console.log("STATUS:", err.response?.status);
   console.log("DATA:", err.response?.data);
