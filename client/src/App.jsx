@@ -45,9 +45,13 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
-        <Route
+        {/* <Route
           path="/login"
           element={<Login onLogin={handleLogin} />}
+        /> */}
+        <Route
+          path="/login"
+          element={<Login handleLogin={handleLogin} />}
         />
         <Route path="/signup" element={<Signup />} />
 
