@@ -55,8 +55,8 @@ function App() {
           path="/login"
           element={<Login handleLogin={handleLogin} />}
         />
-        <Route path="/signup" element={<Signup />} />
-
+        <Route path="/signup" element={<Signup handleLogin={handleLogin} />} />
+        
         {/* Customer Routes */}
         <Route
           path="/customer"
