@@ -11,7 +11,7 @@ const FeedbackMonitoring = () => {
   const fetchReviews = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/reviews/shopkeeper', {
+      const res = await axios.get('http://dukaansetu-backend.onrender.com/api/reviews/shopkeeper', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setReviews(res.data);
