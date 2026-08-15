@@ -20,7 +20,7 @@ const ProductManagement = () => {
     setIsGenerating(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://dukaansetu-backend.onrender.com/api/products/generate-description', 
+      const res = await axios.post('https://dukaansetu-backend.onrender.com/api/products/generate-description', 
         { name: newProduct.name, category: newProduct.category, price: newProduct.price },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -37,14 +37,14 @@ const ProductManagement = () => {
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://dukaansetu-backend.onrender.com/api/products/shopkeeper', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get('https://dukaansetu-backend.onrender.com/api/products/shopkeeper', { headers: { Authorization: `Bearer ${token}` } });
       setProducts(res.data);
     } catch (err) { console.error(err); }
   };
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get('http://dukaansetu-backend.onrender.com/api/admin/categories');
+      const res = await axios.get('https://dukaansetu-backend.onrender.com/api/admin/categories');
       setCategories(res.data);
     } catch (err) { console.error(err); }
   };
@@ -53,7 +53,7 @@ const ProductManagement = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://dukaansetu-backend.onrender.com/api/products', newProduct, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post('https://dukaansetu-backend.onrender.com/api/products', newProduct, { headers: { Authorization: `Bearer ${token}` } });
       setMessage('Product added successfully!');
       setNewProduct({ name: '', price: '', stockQuantity: '', description: '', image: '', category: 'General' });
       fetchProducts();
@@ -65,7 +65,7 @@ const ProductManagement = () => {
     if (window.confirm('Delete this product?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://dukaansetu-backend.onrender.com/api/products/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.delete(`https://dukaansetu-backend.onrender.com/api/products/${id}`, { headers: { Authorization: `Bearer ${token}` } });
         fetchProducts();
       } catch (err) { console.error(err); }
     }
