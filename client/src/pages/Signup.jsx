@@ -31,8 +31,16 @@ const Signup = ({ handleLogin }) => {
       handleLogin(res.data.user);
       navigate(`/${res.data.user.role}`);
     } catch (err) {
-      setError(err.response?.data?.message || 'Server error');
-    }
+  console.log("SIGNUP ERROR:", err);
+  console.log("STATUS:", err.response?.status);
+  console.log("DATA:", err.response?.data);
+
+  setError(
+    err.response?.data?.message ||
+    err.response?.data ||
+    "Server error"
+  );
+}
   };
 
   const roleIcons = {
