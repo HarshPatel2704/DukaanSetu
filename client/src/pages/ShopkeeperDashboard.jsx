@@ -38,6 +38,8 @@ const audioRef = useRef(new Audio('https://assets.mixkit.co/active_storage/sfx/2
   try {
     const token = localStorage.getItem('token');
 
+    console.log("TOKEN:", token);
+
     const res = await axios.get(
       'https://dukaansetu-backend.onrender.com/api/orders/shopkeeper',
       {
@@ -46,19 +48,11 @@ const audioRef = useRef(new Audio('https://assets.mixkit.co/active_storage/sfx/2
         }
       }
     );
-    console.log("SHOPKEEPER ORDERS RESPONSE:", res.data);
-    setSalesData({
-      orders: Array.isArray(res.data?.orders)
-        ? res.data.orders
-        : [],
-      profit: Number(res.data?.profit) || 0
-    });
+
+    console.log("SALES RESPONSE:", res.data);
+    setSalesData(res.data);
   } catch (err) {
     console.error("FETCH SALES ERROR:", err);
-    setSalesData({
-      orders: [],
-      profit: 0
-    });
   }
 };
 
