@@ -3,31 +3,26 @@ import axios from 'axios';
 import { io } from 'socket.io-client';
 
 const ShopkeeperDashboard = () => {
-  const [salesData, setSalesData] = useState({ orders: [], profit: 0 });
-  const [activeProducts, setActiveProducts] = useState(0);
-  const socketRef = useRef();
-  const audioRef = useRef(new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3'));
+const [salesData, setSalesData] = useState({
+  orders: [],
+  profit: 0
+});
+const [activeProducts, setActiveProducts] = useState(0);
+const socketRef = useRef();
+const audioRef = useRef(new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3'));
 
   useEffect(() => {
     fetchSales();
     fetchActiveCount();
 
-    // Initialize socket connection
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user')); // Assuming user info is stored in localStorage
 
     if (user && user.id) {
       socketRef.current = io('https://dukaansetu-backend.onrender.com');
-      
-      // Join a room specific to this shopkeeper
       socketRef.current.emit('join', user.id);
-
-      // Listen for new orders
       socketRef.current.on('newOrder', (data) => {
-        // Play notification sound
         audioRef.current.play().catch(err => console.error("Audio play failed:", err));
-        
-        // Refresh data
         fetchSales();
       });
     }
@@ -40,14 +35,32 @@ const ShopkeeperDashboard = () => {
   }, []);
 
   const fetchSales = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const res = await axios.get('/api/orders/shopkeeper', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setSalesData(res.data);
-    } catch (err) { console.error(err); }
-  };
+  try {
+    const token = localStorage.getItem('token');
+
+    const res = await axios.get(
+      'https://dukaansetu-backend.onrender.com/api/orders/shopkeeper',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    console.log("SHOPKEEPER ORDERS RESPONSE:", res.data);
+    setSalesData({
+      orders: Array.isArray(res.data?.orders)
+        ? res.data.orders
+        : [],
+      profit: Number(res.data?.profit) || 0
+    });
+  } catch (err) {
+    console.error("FETCH SALES ERROR:", err);
+    setSalesData({
+      orders: [],
+      profit: 0
+    });
+  }
+};
 
   const fetchActiveCount = async () => {
     try {
