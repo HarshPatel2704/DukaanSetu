@@ -26,7 +26,9 @@ const CustomerView = ({ defaultView = 'marketplace', user, handleLogout }) => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/products');
+      const res = await axios.get("https://dukaansetu-backend.onrender.com/api/products")
+        // axios.get('http://localhost:5000/api/products');
+      
       setProducts(res.data); setFilteredProducts(res.data);
     } catch (err) { console.error(err); } finally { setLoading(false); }
   };
@@ -35,7 +37,7 @@ const CustomerView = ({ defaultView = 'marketplace', user, handleLogout }) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
-      const res = await axios.get('http://localhost:5000/api/orders/customer', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get('https://dukaansetu-backend.onrender.com/api/orders/customer', { headers: { Authorization: `Bearer ${token}` } });
       setOrders(res.data);
     } catch (err) { console.error(err); }
   };
