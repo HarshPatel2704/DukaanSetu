@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_URL = 'https://dukaansetu-backend.onrender.com';
 const AdminDashboard = ({ defaultTab = 'stats' }) => {
   const [activeTab, setActiveTab] = useState(defaultTab);
   const [users, setUsers] = useState([]);
@@ -23,38 +24,38 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
   }, [activeTab]);
 
   const fetchUsers = async () => {
-    try { const res = await axios.get('/api/admin/users', config); setUsers(res.data); } catch (err) { console.error(err); }
+    try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setUsers(res.data); } catch (err) { console.error(err); }
   };
   const fetchProducts = async () => {
-    try { const res = await axios.get('/api/admin/products', config); setProducts(res.data); } catch (err) { console.error(err); }
+    try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setProducts(res.data); } catch (err) { console.error(err); }
   };
   const fetchCategories = async () => {
-    try { const res = await axios.get('/api/admin/categories', config); setCategories(res.data); } catch (err) { console.error(err); }
+    try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setCategories(res.data); } catch (err) { console.error(err); }
   };
   const fetchStats = async () => {
-    try { const res = await axios.get('/api/admin/stats', config); setStats(res.data); } catch (err) { console.error(err); }
+    try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setStats(res.data); } catch (err) { console.error(err); }
   };
 
   const deleteUser = async (id) => {
-    if (window.confirm('Delete this user?')) { await axios.delete(`/api/admin/users/${id}`, config); fetchUsers(); }
+    if (window.confirm('Delete this user?')) { await axios.delete(`${API_URL}/api/admin/users/${id}`, config); fetchUsers(); }
   };
   const deleteProduct = async (id) => {
-    if (window.confirm('Delete this product?')) { await axios.delete(`/api/admin/products/${id}`, config); fetchProducts(); }
+    if (window.confirm('Delete this product?')) { await axios.delete(`${API_URL}/api/admin/users/${id}`, config); fetchProducts(); }
   };
   const handleAddCategory = async (e) => {
     e.preventDefault();
-    await axios.post('/api/admin/categories', newCategory, config);
+    await axios.post(`${API_URL}/api/admin/categories`, newCategory, config);
     setNewCategory({ name: '', description: '' });
     fetchCategories();
   };
   const handleUpdateCategory = async (e) => {
     e.preventDefault();
-    await axios.put(`/api/admin/categories/${editingCategory._id}`, editingCategory, config);
+    await axios.put(`${API_URL}/api/admin/categories/${editingCategory._id}`, editingCategory, config);
     setEditingCategory(null);
     fetchCategories();
   };
   const deleteCategory = async (id) => {
-    if (window.confirm('Delete this category?')) { await axios.delete(`/api/admin/categories/${id}`, config); fetchCategories(); }
+    if (window.confirm('Delete this category?')) { await axios.delete(`${API_URL}/api/admin/categories/${id}`, config); fetchCategories(); }
   };
 
   const tabs = [
