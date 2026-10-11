@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
+
+const API_URL = 'https://dukaansetu-backend.onrender.com';
 const EditProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const EditProduct = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get('http://dukaansetu-backend.onrender.com/api/admin/categories');
+        const res = await axios.get('https://dukaansetu-backend.onrender.com/api/admin/categories');
         setCategories(res.data);
       } catch (err) { console.error(err); }
     };
@@ -27,7 +29,7 @@ const EditProduct = () => {
       try {
         const token = localStorage.getItem('token');
         const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
-        const res = await axios.get(`http://dukaansetu-backend.onrender.com/api/products/${id}`, config);
+        const res = await axios.get(`${API_URL}/api/products/${id}`, config);
         if (res.data) {
           setFormData({
             name: res.data.name || '',
@@ -57,7 +59,7 @@ const EditProduct = () => {
     setIsGenerating(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://dukaansetu-backend.onrender.com/api/products/generate-description', 
+      const res = await axios.post('https://dukaansetu-backend.onrender.com/api/products/generate-description', 
         { name: formData.name, category: formData.category, price: formData.price },
         { headers: { Authorization: `Bearer ${token}` } }
       );
