@@ -27,20 +27,20 @@ const AdminDashboard = ({ defaultTab = 'stats' }) => {
     try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setUsers(res.data); } catch (err) { console.error(err); }
   };
   const fetchProducts = async () => {
-    try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setProducts(res.data); } catch (err) { console.error(err); }
+    try { const res = await axios.get(`${API_URL}/api/admin/products`, config); setProducts(res.data); } catch (err) { console.error(err); }
   };
   const fetchCategories = async () => {
-    try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setCategories(res.data); } catch (err) { console.error(err); }
+    try { const res = await axios.get(`${API_URL}/api/admin/categories`, config); setCategories(res.data); } catch (err) { console.error(err); }
   };
   const fetchStats = async () => {
-    try { const res = await axios.get(`${API_URL}/api/admin/users`, config); setStats(res.data); } catch (err) { console.error(err); }
+    try { const res = await axios.get(`${API_URL}/api/admin/stats`, config); setStats(res.data); } catch (err) { console.error(err); }
   };
 
   const deleteUser = async (id) => {
     if (window.confirm('Delete this user?')) { await axios.delete(`${API_URL}/api/admin/users/${id}`, config); fetchUsers(); }
   };
   const deleteProduct = async (id) => {
-    if (window.confirm('Delete this product?')) { await axios.delete(`${API_URL}/api/admin/users/${id}`, config); fetchProducts(); }
+    if (window.confirm('Delete this product?')) { await axios.delete(`${API_URL}/api/admin/products/${id}`, config); fetchProducts(); }
   };
   const handleAddCategory = async (e) => {
     e.preventDefault();
