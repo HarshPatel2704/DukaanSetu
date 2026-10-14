@@ -1,119 +1,57 @@
-# DukaanSetu - MERN E-commerce for Offline Shopkeepers
+# DukaanSetu – Local Marketplace Platform
 
-DukaanSetu is a platform designed to bridge the gap between offline shopkeepers and online customers.
+DukaanSetu is a MERN-stack web application designed to connect local shopkeepers with online customers, helping small businesses establish their digital presence.
 
 ## Features
-- **Role-based Authentication**: Customer, Shopkeeper, and Admin roles.
-- **Shopkeeper Dashboard**: List products, track sales, manage orders (Pending/Delivered), and view profit.
-- **Customer View**: Browse products with search/filters, manage cart, track order history, and provide reviews.
-- **Admin Panel**: Manage categories, moderate products/users, and monitor platform analytics.
+
+- **Role-Based Authentication:** Separate access for customers, shopkeepers, and admins.
+- **Customer Marketplace:** Browse and search products, manage carts, place orders, track order history, and submit reviews.
+- **Shopkeeper Dashboard:** Manage products, orders, sales, and earnings.
+- **Admin Dashboard:** Manage users, products, and categories, and monitor platform analytics.
+- **Order Management:** Track orders through pending and delivered statuses.
 
 ## Tech Stack
-- **Frontend**: React.js, Axios, React Router, Bootstrap (Custom Premium UI)
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB (Local or Atlas)
-- **Auth**: JWT, BcryptJS
 
----
+- **Frontend:** React.js, Axios, React Router, Bootstrap
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT, bcryptjs
 
-## 📊 Entity-Relationship Diagram (ERD) Specification
+## Live Demo
 
-### **1. Entities and Attributes**
+- **Website:** https://dukaansetu-nine.vercel.app/
 
-#### **User**
-*   **_id** (Primary Key)
-*   **name**: Full name of the user.
-*   **email**: Unique login credential.
-*   **password**: Hashed security key.
-*   **address**: Delivery or Shop location.
-*   **role**: Enum (`customer`, `shopkeeper`, `admin`).
-*   **createdAt**: Registration timestamp.
+## Getting Started
 
-#### **Product**
-*   **_id** (Primary Key)
-*   **name**: Product title.
-*   **price**: Cost per unit.
-*   **category**: Linked to Admin-defined categories.
-*   **description**: Detailed product info.
-*   **image**: Product photo URL.
-*   **shopkeeperId** (Foreign Key -> User._id): Product owner.
+**Prerequisites:** Node.js and MongoDB (local installation or MongoDB Atlas).
 
-#### **Category**
-*   **_id** (Primary Key)
-*   **name**: Unique category name.
-*   **description**: Purpose of the category.
-
-#### **Order**
-*   **_id** (Primary Key)
-*   **customerId** (Foreign Key -> User._id): Buyer reference.
-*   **products**: (Array of Sub-documents)
-    *   *productId* (FK -> Product._id)
-    *   *quantity*: Units purchased.
-    *   *price*: Historical price at purchase.
-*   **totalAmount**: Consolidated order total.
-*   **status**: Enum (`pending`, `delivered`).
-*   **createdAt**: Transaction date.
-
-#### **Review**
-*   **_id** (Primary Key)
-*   **orderId** (Foreign Key -> Order._id): Linked transaction.
-*   **customerId** (Foreign Key -> User._id): Reviewer reference.
-*   **shopkeeperIds** (Array of FKs -> User._id): Sellers involved in the order.
-*   **rating**: Numeric scale (1–5).
-*   **comment**: Qualitative feedback.
-
----
-
-## 🧩 Module Specification
-
-### **Module 1: Authentication & Identity (Auth)**
-*   **Purpose**: Secure access and role identification.
-*   **Features**: Registration, JWT login, and role-based redirection.
-
-### **Module 2: Transactional Order Orchestration (Main Module)**
-*   **Purpose**: The core engine connecting buyers and sellers.
-*   **Features**: 
-    *   **Multi-Vendor Cart**: Aggregates products from multiple shops into one order.
-    *   **Order Lifecycle**: Handles order generation, data routing, and status transitions (Pending ⮕ Delivered).
-    *   **Financials**: Real-time calculation of shopkeeper earnings and platform sales.
-
-### **Module 3: Customer Marketplace Module**
-*   **Purpose**: Discovery and purchasing interface.
-*   **Features**: Advanced filtering (Price, Category, Location), Cart management, and Order History.
-
-### **Module 4: Shopkeeper Inventory & Sales Module**
-*   **Purpose**: Seller management tools.
-*   **Features**: Product CRUD with dynamic category selection, Sales analytics, and Order fulfillment tracking.
-
-### **Module 5: Administrative Governance Module**
-*   **Purpose**: Platform-wide control and monitoring.
-*   **Features**: Standardizing categories, Moderating users/products, and System-wide "Popular Product" analytics.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js installed
-- MongoDB installed and running locally (or use MongoDB Atlas URI in `.env`)
-
-### Setup Backend
-1. Go to `server` directory: `cd server`
-2. Install dependencies: `npm install`
-3. Create a `.env` file:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/HarshPatel2704/DukaanSetu.git
+   cd DukaanSetu
    ```
-   PORT=5000
-   MONGO_URI=mongodb://localhost:27017/dukaansetu
-   JWT_SECRET=your_jwt_secret
+
+2. Install backend dependencies:
+   ```bash
+   cd server
+   npm install
    ```
-4. Start the server: `node index.js`
 
-### Setup Frontend
-1. Go to `client` directory: `cd client`
-2. Install dependencies: `npm install`
-3. Start the Vite dev server: `npm run dev`
+3. Configure the backend `.env` file with `PORT`, `MONGO_URI`, and `JWT_SECRET`.
 
-## 🛠 Usage
-- **Customer**: Just signup and start shopping.
-- **Shopkeeper**: Use secret code **8899** during signup.
-- **Admin**: Use secret code **8899** during signup.
+4. Start the backend:
+   ```bash
+   node index.js
+   ```
+
+5. In a separate terminal, install and start the frontend:
+   ```bash
+   cd client
+   npm install
+   npm run dev
+   ```
+
+## Project Goal
+
+To make online product discovery and order management more accessible to local businesses through a dedicated digital marketplace.
+
